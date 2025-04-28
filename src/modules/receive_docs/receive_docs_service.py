@@ -16,6 +16,7 @@ class ReceiveDocsService:
   
   async def transform_docs(self, files: List[UploadFile], document: DocumentBasicInfo) -> ApiResponse:
     convert = DocumentConverter(allowed_formats=["pdf"])
+    # Saving meta data docs in Redis 
     my_data_docs = DocumentInProcessing()
     await redis_client.set(CACHE_KEY_FOR_ACESS_DOCS_META_DATA.format(document.id), 
                            document)

@@ -1,5 +1,4 @@
-from typing import Optional, Generic, List
-from pydantic.generics import GenericModel
+from typing import Optional, List
 from fastapi import UploadFile
 
 
@@ -11,6 +10,7 @@ class DocumentInProcessing:
 
     document_id: int 
     documents_not_processed: List[UploadFile]  
-    documents_processed: List[dict]
+    documents_processed: Optional[List[dict]]
+    ai_extracted_data: Optional[dict] = None
 
  
